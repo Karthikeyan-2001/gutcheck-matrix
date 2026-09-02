@@ -7,7 +7,7 @@
 <meta name="description" content="A weighted micro-decision tool with a roast engine, dramatic blur reveal, and gut-check override.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Courier+Prime:wght@400;700&family=Karla:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400..900&family=Courier+Prime:wght@400;700&family=Karla:wght@400;500;700;800&display=swap" rel="stylesheet">
 <style>
 /* ==========================================================================
    GUTCHECK MATRIX — postal-stamp / dream-board theme
@@ -38,7 +38,7 @@
   --shadow-lg:0 4px 0 rgba(31,43,69,.14), 0 40px 70px -26px rgba(31,43,69,.55);
   --drop-md:drop-shadow(0 3px 0 rgba(31,43,69,.10)) drop-shadow(0 16px 20px rgba(31,43,69,.28));
   --drop-lg:drop-shadow(0 5px 0 rgba(31,43,69,.12)) drop-shadow(0 26px 38px rgba(31,43,69,.36));
-  --font-display:'Alfa Slab One', Rockwell, Georgia, serif;
+  --font-display:'Bodoni Moda', 'Didot', 'Bodoni MT', 'Playfair Display', Georgia, serif;
   --font-mono:'Courier Prime', 'Courier New', ui-monospace, monospace;
   --font-body:'Karla', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
   /* Button-only tints. --teal / --red stay as they are for fills, bars and
@@ -212,7 +212,7 @@ html[data-theme="cyber"] .perf::before{background:rgba(33,212,253,.30);filter:bl
    frame's true centre rather than the centre of what is left over */
 .stamp-band .denom{
   flex:1 1 0;min-width:0;text-align:left;
-  font-family:var(--font-display);font-size:.95rem;color:var(--red);text-shadow:var(--glow);
+  font-family:var(--font-display);font-weight:700;font-size:1.05rem;color:var(--red);text-shadow:var(--glow);
 }
 .stamp-band .airmail{
   flex:1 1 0;min-width:0;text-align:right;
@@ -237,7 +237,7 @@ html[data-theme="cyber"] .perf::before{background:rgba(33,212,253,.30);filter:bl
    equal measure is what makes a stacked lockup read as designed */
 .wordmark{
   display:flex;flex-direction:column;align-items:center;gap:2px;
-  font-family:var(--font-display);line-height:.92;letter-spacing:0;
+  font-family:var(--font-display);font-weight:800;line-height:.98;letter-spacing:0;
   font-size:clamp(1.95rem,6.6vw,3.25rem);margin:0;
 }
 .wm-line{display:inline-block;white-space:nowrap;font-style:normal}
@@ -262,9 +262,10 @@ html[data-theme="cyber"] .wordmark em{text-shadow:0 0 14px var(--red),0 0 34px v
 .btn:active{transform:translate(3px,3px);box-shadow:0 0 0 var(--ink)}
 .btn:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
 .btn.primary{background:var(--cta-red);color:#fff8ec}
-/* Alfa Slab One is a display face; below ~1.3rem its slabs and counters fill
-   in and it reads muddy. The CTA earns its prominence from size, padding and
-   tracking instead, in the same face as every other button. */
+/* The display face is reserved for large type; at UI size a display serif's
+   thin strokes and tight counters read muddy. The CTA earns its prominence
+   from size, padding and tracking instead, in the same face as every other
+   button. */
 .btn.go{background:var(--cta);color:#fff8ec;font-size:1.02rem;padding:15px 26px;letter-spacing:.015em}
 .btn.chaos{background:var(--violet);color:#fff8ec}
 .btn.ghost{background:transparent;box-shadow:2px 2px 0 var(--ink)}
@@ -317,11 +318,11 @@ html[data-theme="cyber"] .panel::before{border-color:var(--line);background:line
 .step-head{display:flex;align-items:flex-start;gap:14px;margin:0 0 20px;flex-wrap:wrap}
 .stepno{
   flex:none;width:54px;height:54px;border-radius:50%;display:grid;place-content:center;
-  font-family:var(--font-display);font-size:1.15rem;color:#fff8ec;background:var(--red);
+  font-family:var(--font-display);font-weight:700;font-size:1.25rem;color:#fff8ec;background:var(--red);
   border:2px solid var(--ink);box-shadow:3px 3px 0 var(--ink);transform:rotate(-6deg);
 }
 .step-head .st{flex:1;min-width:200px}
-h2{font-family:var(--font-display);font-size:clamp(1.3rem,3.6vw,1.75rem);margin:2px 0 2px;letter-spacing:-.01em}
+h2{font-family:var(--font-display);font-weight:700;font-size:clamp(1.4rem,3.8vw,1.9rem);margin:2px 0 2px;letter-spacing:0}
 .sub-note{font-size:.86rem;color:var(--ink-soft);margin:0}
 .label{
   font-family:var(--font-mono);font-size:.74rem;letter-spacing:.15em;text-transform:uppercase;
@@ -457,7 +458,7 @@ html[data-theme="cyber"] .mhead-crit{background:var(--paper-3)}
 
 /* ---------- the gut sprint ---------- */
 .sprint-intro{text-align:center;padding:10px 0 2px}
-.big-num{font-family:var(--font-display);font-size:clamp(2.6rem,10vw,4.2rem);line-height:1;margin:0 0 14px;color:var(--red)}
+.big-num{font-family:var(--font-display);font-weight:700;font-size:clamp(2.7rem,10vw,4.4rem);line-height:1;margin:0 0 14px;color:var(--red)}
 .big-num small{display:block;font-family:var(--font-mono);font-size:.72rem;letter-spacing:.16em;
   text-transform:uppercase;color:var(--ink-soft);margin-top:10px}
 
@@ -482,7 +483,7 @@ html[data-theme="cyber"] .sprint-card{--card-bg:linear-gradient(170deg,var(--pap
 .sprint-q{font-family:var(--font-mono);font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;
   color:var(--ink-soft);margin:0}
 .sprint-q b{color:var(--red);font-size:1.1rem;letter-spacing:.06em}
-.sprint-opt{font-family:var(--font-display);font-size:clamp(1.5rem,5.6vw,2.5rem);line-height:1.12;
+.sprint-opt{font-family:var(--font-display);font-weight:700;font-size:clamp(1.55rem,5.8vw,2.6rem);line-height:1.14;
   margin:12px 0 0;word-break:break-word}
 .sprint-weight{font-family:var(--font-mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;
   color:var(--ink-soft);margin:12px 0 0}
@@ -493,7 +494,7 @@ html[data-theme="cyber"] .sprint-card{--card-bg:linear-gradient(170deg,var(--pap
   background:var(--paper);border:2px solid var(--ink);border-radius:8px;box-shadow:3px 3px 0 var(--ink);
   color:var(--ink);transition:transform .1s ease,box-shadow .1s ease,background .15s ease;
 }
-.sprint-choices button .n{font-family:var(--font-display);font-size:1.5rem;line-height:1}
+.sprint-choices button .n{font-family:var(--font-display);font-weight:700;font-size:1.6rem;line-height:1}
 .sprint-choices button .w{font-family:var(--font-mono);font-size:.6rem;letter-spacing:.08em;
   text-transform:uppercase;color:var(--ink-soft)}
 .sprint-choices button:hover{transform:translate(-1px,-2px);box-shadow:5px 6px 0 var(--ink);background:var(--gold)}
@@ -520,7 +521,7 @@ html[data-theme="cyber"] .hm-row .hm-name{background:var(--paper-3)}
   color:var(--ink-soft);display:flex;align-items:flex-end;justify-content:center;text-align:center;line-height:1.3}
 .hm-cell{
   display:grid;place-content:center;min-height:46px;border-radius:7px;position:relative;
-  border:1.5px solid var(--line);font-family:var(--font-display);font-size:1.05rem;
+  border:1.5px solid var(--line);font-family:var(--font-display);font-weight:800;font-size:1.15rem;
   background:color-mix(in srgb, var(--teal) calc(var(--v) * 17%), var(--paper));
   color:var(--ink);
 }
@@ -555,7 +556,7 @@ html[data-theme="cyber"] .hm-cell{background:color-mix(in srgb, var(--teal) calc
 .overlay.on{display:grid}
 .overlay .kicker{font-family:var(--font-mono);font-size:.78rem;letter-spacing:.4em;text-transform:uppercase;opacity:.8}
 .count{
-  font-family:var(--font-display);font-size:clamp(6rem,30vw,15rem);line-height:1;margin:10px 0;
+  font-family:var(--font-display);font-weight:800;font-size:clamp(6rem,30vw,15rem);line-height:1;margin:10px 0;
   color:var(--gold);text-shadow:6px 6px 0 rgba(224,74,63,.85);
 }
 .count.pop{animation:countPop .55s cubic-bezier(.2,1.5,.35,1)}
@@ -590,8 +591,8 @@ html[data-theme="cyber"] .result-card{--card-bg:
   linear-gradient(170deg,var(--paper-2),var(--paper));}
 .result-card .verdict-kicker{font-family:var(--font-mono);font-size:.76rem;letter-spacing:.24em;text-transform:uppercase;color:var(--ink-soft)}
 .winner{
-  font-family:var(--font-display);font-size:clamp(1.8rem,7vw,3.2rem);line-height:1.06;margin:14px 0 8px;
-  color:var(--ink);text-shadow:3px 3px 0 var(--gold);word-break:break-word;
+  font-family:var(--font-display);font-weight:800;font-size:clamp(1.85rem,7.2vw,3.3rem);line-height:1.1;margin:14px 0 8px;
+  color:var(--ink);text-shadow:2px 2px 0 var(--gold);word-break:break-word;
 }
 html[data-theme="cyber"] .winner{text-shadow:0 0 14px var(--teal),0 0 40px var(--blue)}
 .winner-score{font-family:var(--font-mono);font-size:.92rem;color:var(--ink-soft);letter-spacing:.08em}
@@ -608,7 +609,7 @@ html[data-theme="cyber"] .winner{text-shadow:0 0 14px var(--teal),0 0 40px var(-
 .result-card .approved{
   position:absolute;right:16px;bottom:14px;transform:rotate(-16deg);
   border:3px solid var(--red);color:var(--red);border-radius:6px;padding:6px 12px;
-  font-family:var(--font-display);font-size:.9rem;letter-spacing:.06em;opacity:.5;text-transform:uppercase;
+  font-family:var(--font-display);font-weight:700;font-size:.95rem;letter-spacing:.06em;opacity:.5;text-transform:uppercase;
 }
 
 .bars{display:flex;flex-direction:column;gap:9px;margin:24px auto 6px;max-width:520px;text-align:left}
@@ -629,7 +630,7 @@ html[data-theme="cyber"] .gut .btn.yes{background:var(--green);color:#01180d;bor
 
 .override{margin-top:20px;padding:20px 18px;border:2px dashed var(--violet);border-radius:9px;
   background:color-mix(in srgb,var(--violet) 8%, var(--paper));text-align:center}
-.override h3{font-family:var(--font-display);font-size:1.1rem;margin:0 0 4px}
+.override h3{font-family:var(--font-display);font-weight:700;font-size:1.2rem;margin:0 0 4px}
 .override p{margin:0 0 14px;font-size:.9rem;color:var(--ink-soft)}
 .override .opts{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
 .twist{
@@ -638,7 +639,7 @@ html[data-theme="cyber"] .gut .btn.yes{background:var(--green);color:#01180d;bor
   box-shadow:var(--shadow-md);
 }
 .twist .tw-kicker{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.28em;text-transform:uppercase;color:var(--pink)}
-.twist h3{font-family:var(--font-display);font-size:clamp(1.15rem,4.4vw,1.7rem);margin:10px 0 8px;line-height:1.2}
+.twist h3{font-family:var(--font-display);font-weight:700;font-size:clamp(1.2rem,4.6vw,1.8rem);margin:10px 0 8px;line-height:1.25}
 .twist p{margin:0;font-size:.95rem;color:var(--ink-soft)}
 .twist .heart{position:absolute;top:-14px;left:50%;transform:translateX(-50%);font-size:1.5rem}
 
@@ -657,13 +658,21 @@ html[data-theme="cyber"] .receipt-pre{background:#0d0824}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 .foot{text-align:center;font-family:var(--font-mono);font-size:.68rem;letter-spacing:.16em;
   text-transform:uppercase;color:var(--ink-soft);margin-top:36px;opacity:.9;letter-spacing:.1em}
+/* Transient status line: the only feedback for actions with no other visible
+   result (copied, downloaded, reset, theme changed). Kept in the a11y tree
+   rather than display:none so its aria-live region still announces.
+   The resting offset must clear both its own height AND the bottom inset --
+   translateY(140%) alone left a sliver of the pill on screen permanently --
+   and it fades out too, so the rest state is invisible at any height. */
 .toast{
-  position:fixed;left:50%;bottom:26px;transform:translate(-50%,140%);z-index:90;
+  position:fixed;left:50%;bottom:26px;z-index:90;
+  transform:translate(-50%, calc(100% + 26px));
+  opacity:0;pointer-events:none;
   background:var(--ink);color:var(--paper);font-family:var(--font-mono);font-size:.76rem;
   letter-spacing:.1em;padding:12px 20px;border-radius:99px;box-shadow:var(--shadow-lg);
-  transition:transform .4s cubic-bezier(.2,1.3,.4,1);
+  transition:transform .4s cubic-bezier(.2,1.3,.4,1), opacity .3s ease;
 }
-.toast.on{transform:translate(-50%,0)}
+.toast.on{transform:translate(-50%,0);opacity:1}
 
 /* ---------- responsive ---------- */
 @media (max-width:760px){

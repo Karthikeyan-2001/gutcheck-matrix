@@ -67,8 +67,11 @@ A few things that are load-bearing and easy to break:
   visible gaps) and pulls the browser's trailing gap back off with a negative
   margin. It re-runs on font load, resize and theme change, because the two
   themes use different display faces.
-- **Alfa Slab One is only used above ~1.3rem.** Below that its slabs and counters
-  fill in and it reads muddy; UI-sized text uses Karla.
+- **Bodoni Moda is only used above ~1.3rem.** It is a variable face defaulting
+  to 400, so every display rule states its own weight (700, or 800 for the
+  wordmark and the winner) — otherwise the didone renders far too light, and its
+  hairlines disappear against coloured grounds at small sizes. UI-sized text
+  uses Karla.
 - **Solid buttons use `--cta` / `--cta-red`**, darker siblings of `--teal` and
   `--red`, so light text on them clears WCAG AA (4.5:1). The bright tints stay
   for bars, fills and heat cells.

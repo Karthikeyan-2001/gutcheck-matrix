@@ -72,9 +72,17 @@ A few things that are load-bearing and easy to break:
   synthesise a faux-bold. It is also a wide signage face, so its sizes run
   considerably smaller than a normal-width face would at the same visual
   weight; that is why the display sizes look low. UI-sized text uses Karla.
-- **Solid buttons use `--cta` / `--cta-red`**, darker siblings of `--teal` and
-  `--red`, so light text on them clears WCAG AA (4.5:1). The bright tints stay
-  for bars, fills and heat cells.
+- **Every colour is flat.** The palette is old-ticket: aged manila card stock on
+  a dark counter, printed in the inks vintage tickets actually used (oxblood,
+  slate, bottle green, ochre, dusty plum). There are deliberately **no colour
+  gradients** anywhere — the only `linear-gradient()` left in the stylesheet
+  draws 1px ruled lines and the notch mask, which are patterns, not fades.
+- **Shadows are shallow.** Old card stock does not float, so the shadow tokens
+  are 1–3px and the notch drop-shadow is a 4px blur rather than a 16px one.
+- **Two tints exist only to carry text.** `--cta` / `--cta-red` sit under light
+  button labels and `--gold-deep` under dark ones (plain `--gold` is too light
+  to carry text at label size, and too light to read as a lit star on manila).
+  Every text/background pair in the UI clears WCAG AA.
 
 ## Browser support
 

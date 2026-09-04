@@ -1057,6 +1057,9 @@ const CATEGORIES = [
     crits: [["Need it", 2, "benefit"], ["Price", 1.5, "cost"], ["Will I use it", 1.5, "benefit"]] },
   { id: "weekend", label: "🎈 Weekend",
     crits: [["Fun", 2, "benefit"], ["Cost", 1.5, "cost"], ["Effort", 1.5, "cost"]] },
+  { id: "game",    label: "🎮 Game night",
+    crits: [["Mood fit", 2, "benefit"], ["Pace", 1.5, "benefit"],
+            ["Time sink", 1.5, "cost"], ["Brain drain", 1, "cost"]] },
   { id: "work",    label: "💼 Work",
     crits: [["Impact", 2, "benefit"], ["Effort", 1.5, "cost"], ["Stress", 1.5, "cost"]] },
   { id: "custom",  label: "✏️ Custom",
@@ -1071,6 +1074,7 @@ const CHAOS_SETS = [
   ["Book the Flight", "Refresh the Price Again", "Look at Tents"],
   ["Start the Side Project", "Buy the Domain Only", "Rewatch a Sitcom"],
   ["Clean the Whole Flat", "Clean One Drawer", "Light a Candle and Ignore It"],
+  ["Start a New RPG", "Finish the One You Abandoned", "Reorganise Your Library"],
   ["Take the Job", "Ask for More Money", "Fake Your Own Retirement"]
 ];
 const CHAOS_CRITS = [
@@ -1636,7 +1640,7 @@ function robustness(iterations) {
 const KEYS = {
   fun: /fun|joy|enjoy|vibe|taste|delight|pleasure|excite/i,
   cost: /cost|price|money|expense|spend|budget|\$/i,
-  effort: /effort|work|labou?r|hassle|time|difficult|grind/i,
+  effort: /effort|work|labou?r|hassle|time|difficult|grind|drain|sink/i,
   stress: /stress|anxiety|pressure|risk|dread/i,
   regret: /regret|guilt|shame|remorse/i,
   payoff: /roi|payoff|return|growth|benefit|value|health|long/i

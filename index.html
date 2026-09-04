@@ -262,6 +262,8 @@ html[data-theme="cyber"] .wordmark em{text-shadow:0 0 14px var(--red),0 0 34px v
 .btn.chaos{background:var(--violet);color:#f2e6cd}
 .btn.ghost{background:transparent;box-shadow:2px 2px 0 var(--ink)}
 .btn[disabled]{opacity:.42;cursor:not-allowed;transform:none;box-shadow:2px 2px 0 var(--ink)}
+html[data-theme="cyber"] .stepno,
+html[data-theme="cyber"] .roast .seal{color:#0a0620}
 html[data-theme="cyber"] .btn{border-color:var(--blue);box-shadow:0 0 0 1px var(--blue),0 0 16px rgba(33,212,253,.35);background:var(--paper-2);color:var(--ink)}
 html[data-theme="cyber"] .btn:hover{box-shadow:0 0 0 1px var(--blue),0 0 26px rgba(33,212,253,.6)}
 html[data-theme="cyber"] .btn:active{transform:translate(1px,1px)}
@@ -513,10 +515,10 @@ html[data-theme="cyber"] .hm-row .hm-name{background:var(--paper-3)}
 .hm-cell{
   display:grid;place-content:center;min-height:46px;border-radius:7px;position:relative;
   border:1.5px solid var(--line);font-family:var(--font-display);font-weight:400;font-size:.95rem;
-  background:color-mix(in srgb, var(--teal) calc(var(--v) * 17%), var(--paper));
+  background:color-mix(in srgb, var(--teal) calc(var(--v) * 11%), var(--paper));
   color:var(--ink);
 }
-html[data-theme="cyber"] .hm-cell{background:color-mix(in srgb, var(--teal) calc(var(--v) * 15%), var(--paper-2))}
+html[data-theme="cyber"] .hm-cell{background:color-mix(in srgb, var(--teal) calc(var(--v) * 8%), var(--paper-2))}
 .hm-cell.slow::after{content:"";position:absolute;top:4px;right:5px;width:6px;height:6px;border-radius:50%;
   background:var(--red);box-shadow:0 0 0 2px color-mix(in srgb,var(--paper) 70%,transparent)}
 .telemetry{font-family:var(--font-mono);font-size:.78rem;line-height:1.6;color:var(--ink-soft);
@@ -537,6 +539,74 @@ html[data-theme="cyber"] .hm-cell{background:color-mix(in srgb, var(--teal) calc
 .tweak[open] summary::before{content:"–"}
 .tweak summary:hover{color:var(--ink);border-color:var(--ink)}
 .tweak > .matrix-scroll{margin-top:16px}
+
+/* ---------- direction toggle & demoted categories ---------- */
+.dir-btn{
+  flex:none;font-family:var(--font-mono);font-size:.68rem;letter-spacing:.04em;
+  text-transform:uppercase;padding:6px 9px;border-radius:5px;cursor:pointer;
+  border:1.5px solid var(--line);background:var(--paper);color:var(--ink-soft);
+  transition:background .15s ease,color .15s ease,border-color .15s ease;
+}
+.dir-btn.benefit{border-color:color-mix(in srgb,var(--green) 60%,transparent);color:var(--green)}
+.dir-btn.cost{border-color:color-mix(in srgb,var(--red) 55%,transparent);color:var(--red)}
+.dir-btn:hover{background:var(--paper-3)}
+.dir-btn:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+
+/* the category picker is a side door, not the main entrance */
+.cat-row{
+  display:flex;flex-wrap:wrap;align-items:center;gap:10px;
+  margin-top:22px;padding-top:16px;border-top:1px dashed var(--line);
+}
+.cat-ask{
+  font-family:var(--font-mono);font-size:.7rem;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--ink-soft);
+}
+.cat-row .toolbar{justify-content:flex-start;gap:7px}
+.cat-row .chip.pkg{font-size:.68rem;padding:7px 12px}
+
+/* ---------- weight duel ---------- */
+.duel-pair{display:flex;align-items:stretch;gap:10px;margin:18px 0 12px}
+.duel-side{
+  flex:1 1 0;min-width:0;padding:16px 12px;text-align:center;cursor:pointer;
+  background:var(--paper);border:2px solid var(--ink);border-radius:8px;
+  box-shadow:2px 2px 0 var(--ink);color:var(--ink);
+  font-family:var(--font-display);font-size:.9rem;line-height:1.35;word-break:break-word;
+  transition:transform .1s ease,box-shadow .1s ease,background .15s ease;
+}
+.duel-side:hover{transform:translate(-1px,-2px);box-shadow:3px 4px 0 var(--ink);background:var(--gold-deep);color:#f2e6cd}
+.duel-side:active,.duel-side.hit{transform:translate(2px,2px);box-shadow:0 0 0 var(--ink);background:var(--gold-deep);color:#f2e6cd}
+.duel-side:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+.duel-vs{
+  align-self:center;flex:none;font-family:var(--font-mono);font-size:.72rem;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft);
+}
+.duel-steps{display:flex;flex-wrap:wrap;gap:7px;justify-content:center;margin-bottom:12px}
+.duel-steps button{
+  font-family:var(--font-mono);font-size:.68rem;letter-spacing:.04em;text-transform:uppercase;
+  background:var(--paper);color:var(--ink-soft);border:1.5px solid var(--line);
+  border-radius:99px;padding:7px 13px;cursor:pointer;
+}
+.duel-steps button.on{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.duel-steps button:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+.duel-hint{
+  font-family:var(--font-mono);font-size:.72rem;letter-spacing:.06em;color:var(--ink-soft);
+  text-align:center;margin:0 0 14px;
+}
+
+/* ---------- verdict numbers ---------- */
+.verdict-stats{
+  display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:16px 0 4px;
+}
+.vstat{
+  border:1.5px solid var(--line);border-radius:7px;padding:9px 14px;min-width:104px;
+  background:color-mix(in srgb,var(--ink) 5%,transparent);
+}
+.vstat .vn{font-family:var(--font-display);font-size:1.05rem;line-height:1.2;display:block}
+.vstat .vl{font-family:var(--font-mono);font-size:.6rem;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--ink-soft);display:block;margin-top:3px}
+.vstat.weak .vn{color:var(--red)}
+.vstat.strong .vn{color:var(--green)}
+.hm-cell.neg{outline:1.5px solid color-mix(in srgb,var(--red) 45%,transparent);outline-offset:-3px}
 
 /* ---------- countdown overlay ---------- */
 .overlay{
@@ -675,6 +745,11 @@ html[data-theme="cyber"] .receipt-pre{background:#0d0824}
   .mrow .mcell:last-child{border-bottom:none}
   .mcell .clabel{display:block;align-self:center}
   .cell-val{display:none}
+  .duel-pair{flex-direction:column;gap:7px}
+  .duel-vs{align-self:center}
+  .cat-row{gap:7px}
+  .verdict-stats{gap:7px}
+  .vstat{min-width:0;flex:1 1 30%;padding:8px 9px}
   .sprint-choices{grid-template-columns:repeat(5,1fr);gap:5px}
   .sprint-choices button{padding:12px 2px 9px}
   .sprint-choices button .n{font-size:1.25rem}
@@ -756,14 +831,18 @@ html[data-theme="cyber"] .receipt-pre{background:#0d0824}
         <span class="sub-note" style="font-size:.8rem">Stuck? Quick Chaos fills everything with nonsense you can actually decide between.</span>
       </div>
 
-      <p class="label">Criteria packages</p>
-      <div class="toolbar" id="presetRow" style="justify-content:flex-start"></div>
-
-      <p class="label">Your criteria <b>&nbsp;2–5</b></p>
+      <p class="label">What matters <b>&nbsp;2–5</b></p>
       <div class="crit-list" id="critList"></div>
       <div class="actions" style="margin-top:14px">
         <button class="btn ghost" id="addCritBtn" type="button">+ Add criterion</button>
-        <span class="sub-note" style="font-size:.8rem">Weight: <b>Low ×1</b> · <b>Med ×1.5</b> · <b>High ×2</b></span>
+        <span class="sub-note" style="font-size:.8rem">
+          <b>↑</b> more is better &middot; <b>↓</b> less is better &middot; weight sets how much it counts
+        </span>
+      </div>
+
+      <div class="cat-row">
+        <span class="cat-ask">Deciding something specific?</span>
+        <span class="toolbar" id="presetRow"></span>
       </div>
     </section>
 
@@ -791,7 +870,25 @@ html[data-theme="cyber"] .receipt-pre{background:#0d0824}
         </p>
         <div class="actions" style="justify-content:center">
           <button class="btn go" id="startSprintBtn" type="button">&#9889; Start the Sprint</button>
+          <button class="btn ghost" id="startDuelBtn" type="button">&#9878; Weigh what matters first</button>
           <button class="btn ghost" id="skipSprintBtn" type="button">I'd rather fill a grid</button>
+        </div>
+      </div>
+
+      <!-- A2 · the weight duel (optional) -->
+      <div class="sprint-stage" id="duelStage" hidden>
+        <div class="sprint-progress"><span id="duelBar"></span></div>
+        <p class="sprint-meta"><span id="duelPos">1 / 3</span> &middot; which matters more?</p>
+        <div class="duel-pair">
+          <button class="duel-side" id="duelA" type="button"></button>
+          <span class="duel-vs">vs</span>
+          <button class="duel-side" id="duelB" type="button"></button>
+        </div>
+        <p class="duel-hint" id="duelHint">Tap the one that matters more, then say by how much.</p>
+        <div class="duel-steps" id="duelSteps" role="group" aria-label="By how much"></div>
+        <div class="sprint-nav">
+          <button class="chip" id="duelBackBtn" type="button">&larr; Back one</button>
+          <button class="chip" id="duelSkipBtn" type="button">Skip &mdash; treat them equally</button>
         </div>
       </div>
 
@@ -836,7 +933,7 @@ html[data-theme="cyber"] .receipt-pre{background:#0d0824}
           </div>
           <div class="legend">
             <span><b>1</b> none at all</span><span><b>3</b> middling</span><span><b>5</b> maximum</span>
-            <span>Total = <b>&Sigma; (rating &times; weight)</b></span>
+            <span>Ranked by <b>closeness to the ideal</b> (TOPSIS)</span>
           </div>
         </details>
       </div>
@@ -852,6 +949,7 @@ html[data-theme="cyber"] .receipt-pre{background:#0d0824}
           <p class="verdict-kicker" id="verdictKicker">The matrix has spoken</p>
           <h3 class="winner" id="winnerName">—</h3>
           <p class="winner-score" id="winnerScore">—</p>
+          <div class="verdict-stats" id="verdictStats"></div>
           <p class="winner-note" id="winnerNote" hidden></p>
           <div class="bars" id="bars"></div>
           <div class="approved" aria-hidden="true">Approved</div>
@@ -912,12 +1010,26 @@ const STORE_KEY = "gutcheck-matrix-v1";
 const MAX_OPTS = 4, MIN_OPTS = 2, MAX_CRIT = 5, MIN_CRIT = 2;
 
 /* ---------- presets & chaos content ---------- */
-const PACKAGES = [
-  { id: "work",    label: "🗂 Work Mode",    crits: [["Effort", 1.5], ["ROI", 2], ["Stress", 1.5]] },
-  { id: "weekend", label: "🎈 Weekend Mode", crits: [["Fun", 2], ["Cost", 1.5], ["Regret Risk", 1.5]] },
-  { id: "food",    label: "🍜 Food Fight",   crits: [["Taste", 2], ["Cost", 1], ["Health", 1.5]] },
-  { id: "life",    label: "🌱 Life Ops",     crits: [["Joy", 2], ["Effort", 1.5], ["Long-Term Payoff", 2]] },
-  { id: "custom",  label: "✏️ Custom Fields", crits: [["Criterion One", 1], ["Criterion Two", 1.5]] }
+/* The front door is deliberately generic: three criteria that fit any choice at
+   all, so "cappuccino or mocha" needs no setup. Categories are the side door.
+   Every criterion declares its own direction -- "cost" means more is worse. */
+const DEFAULT_CRITS = [
+  ["Want it",  1.5, "benefit"],   // how much do I actually want this
+  ["Costs me", 1.5, "cost"],      // money, time, effort -- whatever it takes
+  ["Regret",   1.5, "cost"]       // how much I'd wish I'd picked the other
+];
+
+const CATEGORIES = [
+  { id: "travel",  label: "✈️ Travel",
+    crits: [["Excitement", 2, "benefit"], ["Cost", 1.5, "cost"], ["Hassle", 1.5, "cost"]] },
+  { id: "buy",     label: "🛒 Buying",
+    crits: [["Need it", 2, "benefit"], ["Price", 1.5, "cost"], ["Will I use it", 1.5, "benefit"]] },
+  { id: "weekend", label: "🎈 Weekend",
+    crits: [["Fun", 2, "benefit"], ["Cost", 1.5, "cost"], ["Effort", 1.5, "cost"]] },
+  { id: "work",    label: "💼 Work",
+    crits: [["Impact", 2, "benefit"], ["Effort", 1.5, "cost"], ["Stress", 1.5, "cost"]] },
+  { id: "custom",  label: "✏️ Custom",
+    crits: [["", 1.5, "benefit"], ["", 1.5, "benefit"]] }
 ];
 
 const CHAOS_SETS = [
@@ -931,19 +1043,20 @@ const CHAOS_SETS = [
   ["Take the Job", "Ask for More Money", "Fake Your Own Retirement"]
 ];
 const CHAOS_CRITS = [
-  [["Fun", 2], ["Cost", 1.5], ["Regret Risk", 1.5]],
-  [["Effort", 1.5], ["Joy", 2], ["Dignity", 1]],
-  [["Vibes", 2], ["Stress", 1.5], ["Snack Potential", 1]]
+  [["Fun", 2, "benefit"], ["Cost", 1.5, "cost"], ["Regret Risk", 1.5, "cost"]],
+  [["Effort", 1.5, "cost"], ["Joy", 2, "benefit"], ["Dignity", 1, "benefit"]],
+  [["Vibes", 2, "benefit"], ["Stress", 1.5, "cost"], ["Snack Potential", 1, "benefit"]]
 ];
 
 /* ---------- state ---------- */
 let state = null;
 
 function defaultState() {
-  const crits = PACKAGES[1].crits.map(([name, w]) => ({ id: uid(), name, weight: w }));
+  const crits = DEFAULT_CRITS.map(([name, w, dir]) => ({ id: uid(), name, weight: w, dir }));
   const options = [{ id: uid(), name: "" }, { id: uid(), name: "" }];
   const st = { options, criteria: crits, scores: {}, times: {}, sprintDone: false,
-    sound: true, voice: false, theme: "postal", pkg: "weekend" };
+    duels: {}, ahp: null,
+    sound: true, voice: false, theme: "postal", pkg: null };
   normalizeScores(st);
   return st;
 }
@@ -969,6 +1082,19 @@ function normalizeScores(st) {
     });
   });
   Object.keys(st.times).forEach(k => { if (!st.options.some(o => o.id === k)) delete st.times[k]; });
+
+  // Polarity migration. Saves written before criteria had a direction get one
+  // inferred from the name, so an old matrix upgrades silently rather than
+  // being thrown away.
+  st.criteria.forEach(c => {
+    if (c.dir !== "benefit" && c.dir !== "cost") c.dir = inferDir(c.name);
+  });
+  // pairwise duels are keyed by criterion pair; drop any naming a dead criterion
+  st.duels = (st.duels && typeof st.duels === "object") ? st.duels : {};
+  Object.keys(st.duels).forEach(k => {
+    const [a, b] = k.split("|");
+    if (!st.criteria.some(c => c.id === a) || !st.criteria.some(c => c.id === b)) delete st.duels[k];
+  });
 }
 function save() {
   try { localStorage.setItem(STORE_KEY, JSON.stringify(state)); } catch (e) { /* private mode */ }
@@ -983,8 +1109,11 @@ function load() {
     st.options = st.options.slice(0, MAX_OPTS).map(o => ({ id: o.id || uid(), name: String(o.name || "").slice(0, 60) }));
     st.criteria = st.criteria.slice(0, MAX_CRIT).map(c => ({
       id: c.id || uid(), name: String(c.name || "Criterion").slice(0, 40),
-      weight: [1, 1.5, 2].includes(c.weight) ? c.weight : 1
+      weight: [1, 1.5, 2].includes(c.weight) ? c.weight : 1.5,
+      dir: (c.dir === "cost" || c.dir === "benefit") ? c.dir : undefined
     }));
+    st.duels = (st.duels && typeof st.duels === "object") ? st.duels : {};
+    st.ahp = (st.ahp && typeof st.ahp === "object") ? st.ahp : null;
     st.sound = st.sound !== false;
     st.voice = st.voice === true;
     st.theme = st.theme === "cyber" ? "cyber" : "postal";
@@ -1185,7 +1314,7 @@ function renderOptions() {
 }
 
 function renderPresets() {
-  $("#presetRow").innerHTML = PACKAGES.map(p =>
+  $("#presetRow").innerHTML = CATEGORIES.map(p =>
     `<button class="chip pkg ${state.pkg === p.id ? "on" : ""}" type="button" data-pkg="${p.id}">${p.label}</button>`
   ).join("");
 }
@@ -1197,6 +1326,11 @@ function renderCriteria() {
       <span class="grip" aria-hidden="true">C${i + 1}</span>
       <input class="crit-input" type="text" maxlength="40" data-cid="${c.id}"
         value="${esc(c.name)}" placeholder="Criterion name" aria-label="Criterion ${i + 1} name">
+      <button class="dir-btn ${c.dir === "cost" ? "cost" : "benefit"}" type="button"
+        data-act="dir" data-cid="${c.id}"
+        title="${c.dir === "cost" ? "Less is better — click to flip" : "More is better — click to flip"}"
+        aria-label="${esc(c.name || "Criterion")}: ${c.dir === "cost" ? "less is better" : "more is better"}, click to flip"
+        >${c.dir === "cost" ? "↓ less" : "↑ more"}</button>
       <div class="weights" role="group" aria-label="Weight for ${esc(c.name)}">
         <button type="button" data-w="1"   data-cid="${c.id}" class="${c.weight === 1 ? "on" : ""}">Low ×1</button>
         <button type="button" data-w="1.5" data-cid="${c.id}" class="${c.weight === 1.5 ? "on" : ""}">Med ×1.5</button>
@@ -1232,7 +1366,7 @@ function renderMatrix() {
     const r = results.find(x => x.id === o.id);
     h += `<div class="mrow" style="${cols}">
       <div class="mopt"><span class="nm">${esc(optName(o, i))}</span>
-        <span class="sc">Σ ${r ? r.total.toFixed(1) : "0"} pts</span></div>` +
+        <span class="sc">${r ? r.pct : 0}% ideal</span></div>` +
       state.criteria.map(c => `<div class="mcell">
           <span class="clabel">${esc(c.name || "Criterion")} · ${wtag(c.weight)}</span>
           ${starsHTML(o.id, c.id, state.scores[o.id][c.id])}
@@ -1251,6 +1385,7 @@ function renderAll() {
 function renderSprintPhase() {
   const n = state.options.length * state.criteria.length;
   $("#sprintCount").textContent = n;
+  if (Duel.active) { phase("duel"); return; }
   if (Sprint.active) { phase("stage"); return; }
   if (state.sprintDone) { phase("done"); renderHeatmap(); }
   else phase("intro");
@@ -1259,20 +1394,211 @@ function renderSprintPhase() {
 /* ==========================================================================
    The engine
    ========================================================================== */
-function compute(invert) {
-  const maxPer = state.criteria.reduce((s, c) => s + 5 * c.weight, 0) || 1;
-  const rows = state.options.map((o, i) => {
-    const breakdown = state.criteria.map(c => ({
-      name: c.name || "Criterion",
-      rating: state.scores[o.id][c.id],
-      weight: c.weight,
-      points: state.scores[o.id][c.id] * c.weight
-    }));
-    const total = breakdown.reduce((s, b) => s + b.points, 0);
-    return { id: o.id, name: optName(o, i), index: i, total, pct: Math.round((total / maxPer) * 100), breakdown };
+/* ==========================================================================
+   The decision engine
+   --------------------------------------------------------------------------
+   Three layers, all pure client-side maths, no libraries:
+     TOPSIS      ranks options by closeness to the ideal
+     AHP         derives weights from pairwise duels, with a consistency check
+     Monte Carlo asks how often the winner survives a slightly different world
+   ========================================================================== */
+
+/* Which way does this criterion point? "cost" means more is worse. Presets
+   declare their own direction; this only has to guess for names people type. */
+function inferDir(name) {
+  const n = String(name || "");
+  return (KEYS.cost.test(n) || KEYS.effort.test(n) || KEYS.stress.test(n) || KEYS.regret.test(n))
+    ? "cost" : "benefit";
+}
+
+/* --------------------------------------------------------------- TOPSIS ---
+   1. vector-normalise each criterion column:  r = x / sqrt(sum of squares)
+   2. weight it:                               v = w * r
+   3. ideal A+ = best per criterion (max for benefit, min for cost); A- = worst
+   4. Euclidean distance to each
+   5. closeness C = d- / (d+ + d-)   in [0,1], 1 = the ideal itself
+   Unlike a weighted sum this measures distance from the WORST case too, so one
+   lopsided high score no longer carries an option. */
+function topsis(options, criteria, scores, weights) {
+  const n = options.length, m = criteria.length;
+  if (!n || !m) return [];
+
+  // column norms; a column everyone scores the same carries no information
+  const norm = criteria.map(c => {
+    let ss = 0;
+    options.forEach(o => { const v = scores[o.id][c.id]; ss += v * v; });
+    return Math.sqrt(ss);
   });
-  rows.sort((a, b) => invert ? a.total - b.total : b.total - a.total);
+  const live = criteria.map((c, j) => {
+    const first = scores[options[0].id][c.id];
+    return norm[j] > 1e-9 && options.some(o => scores[o.id][c.id] !== first);
+  });
+  const anyLive = live.some(Boolean);
+
+  const wOf = c => (weights && typeof weights[c.id] === "number") ? weights[c.id] : c.weight;
+  const wSum = criteria.reduce((t, c) => t + wOf(c), 0) || 1;
+
+  // weighted normalised matrix
+  const V = options.map(o => criteria.map((c, j) =>
+    norm[j] > 1e-9 ? (wOf(c) / wSum) * (scores[o.id][c.id] / norm[j]) : 0));
+
+  // ideal and anti-ideal, respecting each criterion's direction
+  const best = [], worst = [];
+  criteria.forEach((c, j) => {
+    const col = V.map(row => row[j]);
+    const hi = Math.max.apply(null, col), lo = Math.min.apply(null, col);
+    if (c.dir === "cost") { best[j] = lo; worst[j] = hi; }
+    else                  { best[j] = hi; worst[j] = lo; }
+  });
+
+  return options.map((o, i) => {
+    let dPos = 0, dNeg = 0;
+    criteria.forEach((c, j) => {
+      if (!live[j]) return;                       // dead column contributes nothing
+      dPos += Math.pow(V[i][j] - best[j], 2);
+      dNeg += Math.pow(V[i][j] - worst[j], 2);
+    });
+    dPos = Math.sqrt(dPos); dNeg = Math.sqrt(dNeg);
+    // every option identical, or a single live criterion: fall back to a plain
+    // polarity-aware mean so the UI never shows a fabricated 100%
+    let closeness;
+    if (!anyLive || (dPos + dNeg) < 1e-12) {
+      closeness = criteria.reduce((t, c) => {
+        const r = (scores[o.id][c.id] - 1) / 4;
+        return t + (c.dir === "cost" ? 1 - r : r) * wOf(c);
+      }, 0) / wSum;
+    } else {
+      closeness = dNeg / (dPos + dNeg);
+    }
+    const breakdown = criteria.map(c => ({
+      name: c.name || "Criterion",
+      rating: scores[o.id][c.id],
+      weight: wOf(c),
+      dir: c.dir,
+      // signed contribution, so a 5 on Cost reads as a negative
+      points: (c.dir === "cost" ? (6 - scores[o.id][c.id]) : scores[o.id][c.id]) * wOf(c)
+    }));
+    return { id: o.id, name: optName(o, i), index: i, closeness,
+             dPos, dNeg, breakdown,
+             total: breakdown.reduce((t, b) => t + b.points, 0) };
+  });
+}
+
+/* Weights actually in force: AHP if the duels were run, otherwise the manual
+   Low/Med/High values. */
+function activeWeights() {
+  return (state.ahp && state.ahp.done && state.ahp.weights) ? state.ahp.weights : null;
+}
+
+function compute(invert) {
+  const rows = topsis(state.options, state.criteria, state.scores, activeWeights());
+  rows.forEach(r => { r.pct = Math.round(r.closeness * 100); });
+  rows.sort((a, b) => invert ? a.closeness - b.closeness : b.closeness - a.closeness);
   return rows;
+}
+
+/* ------------------------------------------------------------------ AHP ---
+   Duels are stored as a signed Saaty intensity: +k means "row beats column by
+   k", -k the reverse. Weights come from the geometric mean of each row of the
+   reciprocal matrix, which approximates the principal eigenvector closely
+   enough for three to five criteria and needs no matrix library.
+   CR > 0.1 means the stated preferences contradict each other. */
+/* CR is a ratio and can exceed 1; clamp for display so it never reads >99% */
+const crPct = cr => Math.min(99, Math.round(cr * 100));
+
+const SAATY_RI = { 1: 0, 2: 0, 3: 0.58, 4: 0.90, 5: 1.12, 6: 1.24, 7: 1.32 };
+const DUEL_STEPS = [
+  [1, "Equal"], [3, "A bit more"], [5, "Clearly more"], [7, "Far more"], [9, "No contest"]
+];
+const duelKey = (a, b) => a + "|" + b;
+
+function duelValue(duels, a, b) {
+  if (a === b) return 1;
+  const fwd = duels[duelKey(a, b)];
+  if (typeof fwd === "number") return fwd > 0 ? fwd : 1 / -fwd;
+  const rev = duels[duelKey(b, a)];
+  if (typeof rev === "number") return rev > 0 ? 1 / rev : -rev;
+  return 1;                                          // unanswered reads as equal
+}
+
+function ahpWeights(duels, criteria) {
+  const n = criteria.length;
+  if (n < 2) return { weights: null, cr: 0, complete: false };
+  const M = criteria.map(a => criteria.map(b => duelValue(duels, a.id, b.id)));
+
+  // geometric mean of each row, then normalise
+  const gm = M.map(row => Math.pow(row.reduce((t, v) => t * v, 1), 1 / n));
+  const gmSum = gm.reduce((t, v) => t + v, 0) || 1;
+  const w = gm.map(v => v / gmSum);
+
+  // lambda_max from the row sums of M*w, then CI and CR
+  let lambda = 0;
+  for (let i = 0; i < n; i++) {
+    let row = 0;
+    for (let j = 0; j < n; j++) row += M[i][j] * w[j];
+    if (w[i] > 1e-12) lambda += row / w[i];
+  }
+  lambda /= n;
+  const ci = n > 1 ? (lambda - n) / (n - 1) : 0;
+  const ri = SAATY_RI[n] || 1.32;
+  const cr = ri > 0 ? Math.max(0, ci / ri) : 0;
+
+  const weights = {};
+  criteria.forEach((c, i) => { weights[c.id] = w[i] * n; });   // keep the old ~1..2 scale
+  return { weights, cr, lambdaMax: lambda, complete: true };
+}
+
+function duelPairs(criteria) {
+  const out = [];
+  for (let i = 0; i < criteria.length; i++)
+    for (let j = i + 1; j < criteria.length; j++) out.push([criteria[i], criteria[j]]);
+  return out;
+}
+
+/* ---------------------------------------------------------- robustness ---
+   SMAA-style rank acceptability: rerun the whole decision in a few thousand
+   nearby worlds -- ratings nudged by up to +-1, weights jittered -- and count
+   how often the same option still wins. This is the "how much should I trust
+   this" number the app never had.
+   EXPENSIVE: call once at reveal, never from a render path. */
+function robustness(iterations) {
+  const N = iterations || 2000;
+  const opts = state.options, crits = state.criteria;
+  if (opts.length < 2 || !crits.length) return null;
+  const base = compute();
+  const winnerId = base[0].id;
+  const baseW = activeWeights();
+  const wins = {};
+  opts.forEach(o => { wins[o.id] = 0; });
+
+  const jScores = {}, jWeights = {};
+  for (let k = 0; k < N; k++) {
+    opts.forEach(o => {
+      jScores[o.id] = jScores[o.id] || {};
+      crits.forEach(c => {
+        const v = state.scores[o.id][c.id] + (Math.random() * 2 - 1);
+        jScores[o.id][c.id] = Math.min(5, Math.max(1, v));
+      });
+    });
+    crits.forEach(c => {
+      const w = baseW && typeof baseW[c.id] === "number" ? baseW[c.id] : c.weight;
+      jWeights[c.id] = Math.max(0.05, w * (0.75 + Math.random() * 0.5));
+    });
+    const r = topsis(opts, crits, jScores, jWeights);
+    let top = r[0];
+    for (let i = 1; i < r.length; i++) if (r[i].closeness > top.closeness) top = r[i];
+    wins[top.id]++;
+  }
+  const ranked = opts.map(o => ({ id: o.id, pct: wins[o.id] / N }))
+                     .sort((a, b) => b.pct - a.pct);
+  const runnerUp = ranked.find(r => r.id !== winnerId);
+  return {
+    winnerId,
+    pct: Math.round((wins[winnerId] / N) * 100),
+    runnerUpPct: runnerUp ? Math.round(runnerUp.pct * 100) : 0,
+    runnerUpName: runnerUp ? (base.find(b => b.id === runnerUp.id) || {}).name : null,
+    iterations: N
+  };
 }
 
 /* --- criterion keyword sniffing for the roast engine --- */
@@ -1323,6 +1649,12 @@ const ROASTS = {
   effortpay: ["High effort, high payoff. That's just called doing the thing.",
     "Yes, it's work. That's usually the trade.",
     "The expensive option is the good one. Annoying, isn't it?"],
+  incoherent: ["You said A beats B, B beats C, and C beats A. Pick a lane.",
+    "Your priorities contradict each other. Impressive, honestly.",
+    "These comparisons don't add up. That's not the matrix's fault."],
+  fragile: ["This winner is a coin flip in a nice suit.",
+    "Nudge any score and the answer changes. It's basically a tie.",
+    "Fragile result. Don't quote the matrix on this one."],
   stalled: ["That pause was the real answer.",
     "You froze on that one. Freezing is information.",
     "Your hands knew. Your head argued."],
@@ -1364,7 +1696,18 @@ function roastVerdict() {
   const avg = flat.reduce((a, b) => a + b, 0) / flat.length;
   const res = compute();
   const lead = res[0], last = res[res.length - 1];
-  const spread = lead.total > 0 ? (lead.total - last.total) / lead.total : 0;
+  // ranking quantity is closeness now, so the tie/runaway tests read it
+  const spread = lead.closeness > 0 ? (lead.closeness - last.closeness) / lead.closeness : 0;
+
+  // self-contradiction in the duels outranks anything the scores say
+  if (state.ahp && state.ahp.done && state.ahp.cr > 0.1) {
+    return { key: "incoherent", text: pick(ROASTS.incoherent) +
+      " Your comparisons are " + crPct(state.ahp.cr) + "% inconsistent, and 10% is the limit." };
+  }
+  if (lastResult && lastResult.robust && lastResult.robust.pct < 60) {
+    return { key: "fragile", text: pick(ROASTS.fragile) +
+      " It only wins in " + lastResult.robust.pct + "% of nearby worlds." };
+  }
 
   if (fun !== null && cost !== null && fun >= 3.8 && cost >= 3.8)
     return { key: "wallet", text: pick(ROASTS.wallet) };
@@ -1381,7 +1724,7 @@ function roastVerdict() {
   return { key: "neutral", text: pick(ROASTS.neutral) };
 }
 
-const SEALS = { stalled: "⏱️", rushed: "⚡", identical: "🥱", wallet: "💸", punish: "🔨", bleak: "🌧", rosy: "🤨", tie: "⚖️",
+const SEALS = { incoherent: "🌀", fragile: "🪙", stalled: "⏱️", rushed: "⚡", identical: "🥱", wallet: "💸", punish: "🔨", bleak: "🌧", rosy: "🤨", tie: "⚖️",
   runaway: "🏁", stress: "😰", regret: "😬", effortpay: "💪", neutral: "🔥", idle: "📮" };
 
 function renderRoast() {
@@ -1405,9 +1748,85 @@ const SNAP = [["1", "None"], ["2", "Barely"], ["3", "Some"], ["4", "Lots"], ["5"
 
 function phase(p) {
   $("#sprintIntro").hidden = p !== "intro";
+  $("#duelStage").hidden = p !== "duel";
   $("#sprintStage").hidden = p !== "stage";
   $("#sprintDone").hidden = p !== "done";
 }
+
+/* The weight duel: n(n-1)/2 pairwise comparisons feeding AHP. Entirely
+   optional -- skipping it leaves the manual Low/Med/High weights in force.
+   Mirrors Sprint's shape so the interaction, sounds and keys feel identical. */
+const Duel = {
+  queue: [], i: 0, active: false, pickedId: null,
+
+  build() { this.queue = duelPairs(state.criteria); },
+  start() {
+    Sound.ensure();
+    this.build();
+    if (this.queue.length < 1) return;
+    this.i = 0; this.active = true; this.pickedId = null;
+    state.duels = {};
+    phase("duel");
+    this.render();
+  },
+  render() {
+    if (this.i >= this.queue.length) return this.finish(true);
+    const [a, b] = this.queue[this.i];
+    this.pickedId = null;
+    $("#duelA").textContent = a.name || "Criterion A";
+    $("#duelB").textContent = b.name || "Criterion B";
+    $("#duelA").classList.remove("hit"); $("#duelB").classList.remove("hit");
+    $("#duelPos").textContent = (this.i + 1) + " / " + this.queue.length;
+    $("#duelBar").style.width = ((this.i / this.queue.length) * 100) + "%";
+    $("#duelBackBtn").disabled = this.i === 0;
+    $("#duelBackBtn").style.opacity = this.i === 0 ? ".4" : "1";
+    $("#duelHint").textContent = "Tap the one that matters more, then say by how much.";
+    $("#duelSteps").innerHTML = "";
+  },
+  pick(which) {
+    if (!this.active) return;
+    const [a, b] = this.queue[this.i];
+    this.pickedId = which === "a" ? a.id : b.id;
+    $("#duelA").classList.toggle("hit", which === "a");
+    $("#duelB").classList.toggle("hit", which === "b");
+    Sound.blip(which === "a");
+    const name = (which === "a" ? a.name : b.name) || "that";
+    $("#duelHint").textContent = "How much more does " + name + " matter?";
+    $("#duelSteps").innerHTML = DUEL_STEPS.map(([v, label]) =>
+      `<button type="button" data-int="${v}">${label}</button>`).join("");
+  },
+  intensity(v) {
+    if (!this.active || !this.pickedId) return;
+    const [a, b] = this.queue[this.i];
+    // stored signed: positive means the first of the pair wins by v
+    state.duels[duelKey(a.id, b.id)] = (this.pickedId === a.id) ? v : -v;
+    Sound.blip(true);
+    this.i++;
+    save();
+    setTimeout(() => { if (this.active) this.render(); }, 140);
+  },
+  skipOne() {
+    if (!this.active) return;
+    const [a, b] = this.queue[this.i];
+    state.duels[duelKey(a.id, b.id)] = 1;     // equal
+    this.i++;
+    Sound.blip(false);
+    save();
+    this.render();
+  },
+  back() { if (this.i > 0) { this.i--; this.render(); } },
+  finish(complete) {
+    this.active = false;
+    if (complete) {
+      const r = ahpWeights(state.duels, state.criteria);
+      state.ahp = r.complete ? { weights: r.weights, cr: r.cr, done: true } : null;
+      Sound.thunk();
+    }
+    save();
+    // straight on into the snap calls -- the duel is a preamble, not a detour
+    Sprint.start(true);
+  }
+};
 
 const Sprint = {
   queue: [], i: 0, t0: 0, tickId: null, active: false,
@@ -1521,7 +1940,8 @@ function renderHeatmap() {
   const wtag = w => w === 2 ? "\u00d72" : w === 1.5 ? "\u00d71.5" : "\u00d71";
 
   let h = '<div class="hm-row hm-head" style="' + cols + '"><div class="hm-name"></div>' +
-    state.criteria.map(c => "<span>" + esc(c.name || "\u2014") + "<br>" + wtag(c.weight) + "</span>").join("") +
+    state.criteria.map(c => "<span>" + esc(c.name || "\u2014") +
+      (c.dir === "cost" ? " \u2193" : " \u2191") + "<br>" + wtag(c.weight) + "</span>").join("") +
     "</div>";
 
   state.options.forEach((o, i) => {
@@ -1529,14 +1949,19 @@ function renderHeatmap() {
     const win = best && r && r.id === best.id;
     h += '<div class="hm-row ' + (win ? "win" : "") + '" style="' + cols + '">' +
       '<div class="hm-name"><span class="n">' + (win ? "\u2605 " : "") + esc(optName(o, i)) + "</span>" +
-      '<span class="t">\u03a3 ' + r.total.toFixed(1) + " \u00b7 " + r.pct + "%</span></div>" +
+      '<span class="t">' + r.pct + "% ideal</span></div>" +
       state.criteria.map(c => {
         const v = state.scores[o.id][c.id];
         const t = (state.times[o.id] || {})[c.id];
         const slow = stats.slowKey === (o.id + "|" + c.id);
+        // shade by how GOOD the cell is, which for a cost criterion is inverted
+        const good = c.dir === "cost" ? (6 - v) : v;
+        const bad = c.dir === "cost" ? v >= 4 : v <= 2;
         const tip = esc(c.name || "criterion") + ": " + v +
+          (c.dir === "cost" ? " (less is better)" : "") +
           (typeof t === "number" ? " \u00b7 " + (t / 1000).toFixed(1) + "s" : "");
-        return '<div class="hm-cell ' + (slow ? "slow" : "") + '" style="--v:' + v + '" title="' + tip + '">' + v + "</div>";
+        return '<div class="hm-cell ' + (slow ? "slow " : "") + (bad ? "neg" : "") +
+          '" style="--v:' + good + '" title="' + tip + '">' + v + "</div>";
       }).join("") + "</div>";
   });
   host.innerHTML = h;
@@ -1563,8 +1988,10 @@ function renderTelemetry(stats) {
 
 function resetSprint() {
   Sprint.active = false;
+  Duel.active = false;
   clearInterval(Sprint.tickId);
   state.sprintDone = false;
+  state.duels = {}; state.ahp = null;
   state.options.forEach(o => { state.times[o.id] = {}; });
 }
 
@@ -1583,7 +2010,9 @@ async function runReveal(chaos) {
 
   const results = compute(!!chaos);
   const winner = results[0];
-  lastResult = { winner, results, chaos: !!chaos, at: new Date() };
+  // Monte Carlo is expensive; once per reveal, cached, never from a render path
+  const robust = chaos ? null : robustness(2000);
+  lastResult = { winner, results, chaos: !!chaos, robust, at: new Date() };
 
   // paint the (blurred) card first
   paintResult(lastResult);
@@ -1638,13 +2067,31 @@ function paintResult(r) {
     ? `<span class="chaos-flag">☠ Chaos Mode · worst option wins</span>` : "";
   $("#verdictKicker").textContent = chaos ? "Chaos decrees you must" : "The matrix has spoken";
   $("#winnerName").textContent = winner.name;
-  $("#winnerScore").textContent = `${winner.total.toFixed(1)} points · ${winner.pct}% of a perfect score`
-    + (chaos ? " · the objectively worst pick" : "");
+  $("#winnerScore").textContent = chaos
+    ? "the objectively worst pick, by the same maths"
+    : `${winner.pct}% of the way to a perfect choice`;
+
+  // closeness / robustness / consistency, the three things worth trusting
+  const rb = r.robust;
+  const cr = (state.ahp && state.ahp.done) ? state.ahp.cr : null;
+  const stats = [];
+  stats.push({ n: winner.pct + "%", l: "close to ideal",
+               k: winner.pct >= 70 ? "strong" : winner.pct <= 45 ? "weak" : "" });
+  if (rb) stats.push({ n: rb.pct + "%", l: "holds up",
+               k: rb.pct >= 75 ? "strong" : rb.pct < 60 ? "weak" : "" });
+  if (cr !== null) stats.push({ n: crPct(cr) + "%", l: "inconsistency",
+               k: cr > 0.1 ? "weak" : "strong" });
+  $("#verdictStats").innerHTML = stats.map(x =>
+    `<span class="vstat ${x.k}"><span class="vn">${x.n}</span><span class="vl">${x.l}</span></span>`).join("");
 
   // the behavioural read: a stall on a losing option is the thing worth saying
   const ts = timeStats();
   const note = $("#winnerNote");
-  if (ts.count && ts.hesitated && ts.slow.oid !== winner.id) {
+  if (rb && rb.pct < 60 && rb.runnerUpName) {
+    note.hidden = false;
+    note.innerHTML = "⚖ Barely holds. <b>" + esc(rb.runnerUpName) + "</b> wins in " +
+      rb.runnerUpPct + "% of nearby worlds — this is closer to a coin flip than a verdict.";
+  } else if (ts.count && ts.hesitated && ts.slow.oid !== winner.id) {
     note.hidden = false;
     note.innerHTML = "⏱ But you stalled longest on <b>" + esc(ts.slow.opt) + "</b>. Sit with that for a second.";
   } else if (ts.count && ts.hesitated) {
@@ -1654,13 +2101,13 @@ function paintResult(r) {
     note.hidden = true;
     note.innerHTML = "";
   }
-  const ordered = results.slice().sort((a, b) => b.total - a.total);
-  const top = ordered[0].total || 1;
+  const ordered = results.slice().sort((a, b) => b.closeness - a.closeness);
+  // width is closeness itself, not a share of the leader -- honest rather than flattering
   $("#bars").innerHTML = ordered.map(o => `
     <div class="bar-row ${o.id === winner.id ? "win" : ""}">
       <span class="bn">${esc(o.name)}</span>
-      <span class="bar-track"><span class="bar-fill" data-w="${Math.max(4, Math.round((o.total / top) * 100))}"></span></span>
-      <span class="bv">${o.total.toFixed(1)} · ${o.pct}%</span>
+      <span class="bar-track"><span class="bar-fill" data-w="${Math.max(3, Math.round(o.closeness * 100))}"></span></span>
+      <span class="bv">${o.pct}%</span>
     </div>`).join("");
 }
 
@@ -1745,11 +2192,21 @@ function receiptLines() {
   L.push(center(at.toLocaleString(), W));
   L.push(rule);
   L.push("CRITERIA & WEIGHTS");
-  state.criteria.forEach(c => L.push("  " + pad(c.name || "Criterion", 30) + "x" + c.weight));
+  const aw = activeWeights();
+  state.criteria.forEach(c => {
+    const w = aw && typeof aw[c.id] === "number" ? aw[c.id] : c.weight;
+    L.push("  " + pad((c.dir === "cost" ? "v " : "^ ") + (c.name || "Criterion"), 30) +
+      "x" + (Math.round(w * 100) / 100));
+  });
+  L.push("  " + (aw ? "weights from pairwise duels (AHP)" : "weights set by hand"));
+  if (state.ahp && state.ahp.done)
+    L.push("  consistency: " + crPct(state.ahp.cr) + "% inconsistent (10% is the limit)" +
+      (state.ahp.cr > 0.1 ? "  [!]" : "  [ok]"));
   L.push(thin);
   L.push("SCORES");
-  results.slice().sort((a, b) => b.total - a.total).forEach((r, i) => {
-    L.push(`  ${i + 1}. ` + pad(r.name, 28) + pad(r.total.toFixed(1) + " pts", 10) + r.pct + "%");
+  results.slice().sort((a, b) => b.closeness - a.closeness).forEach((r, i) => {
+    L.push(`  ${i + 1}. ` + pad(r.name, 28) + pad(r.pct + "% ideal", 12) +
+      (r.id === winner.id && lastResult.robust ? lastResult.robust.pct + "% robust" : ""));
     L.push("     " + r.breakdown.map(b => `${b.name}:${b.rating}`).join("  "));
   });
   const ts = timeStats();
@@ -1908,8 +2365,9 @@ $("#quickChaosBtn").addEventListener("click", () => {
   const set = pick(CHAOS_SETS);
   const crits = pick(CHAOS_CRITS);
   state.options = set.slice(0, 3).map(n => ({ id: uid(), name: n }));
-  state.criteria = crits.map(([name, w]) => ({ id: uid(), name, weight: w }));
+  state.criteria = crits.map(([name, w, dir]) => ({ id: uid(), name, weight: w, dir }));
   state.pkg = null;
+  state.duels = {}; state.ahp = null;
   state.scores = {};
   normalizeScores(state);
   state.options.forEach(o => state.criteria.forEach(c => {
@@ -1924,9 +2382,10 @@ $("#quickChaosBtn").addEventListener("click", () => {
 /* presets */
 $("#presetRow").addEventListener("click", e => {
   const b = e.target.closest("[data-pkg]"); if (!b) return;
-  const p = PACKAGES.find(p => p.id === b.dataset.pkg); if (!p) return;
-  state.criteria = p.crits.map(([name, w]) => ({ id: uid(), name, weight: w }));
+  const p = CATEGORIES.find(p => p.id === b.dataset.pkg); if (!p) return;
+  state.criteria = p.crits.map(([name, w, dir]) => ({ id: uid(), name, weight: w, dir }));
   state.pkg = p.id;
+  state.duels = {}; state.ahp = null;
   resetSprint();
   Sound.blip(true);
   afterEdit(false); renderPresets(); renderCriteria(); renderMatrix();
@@ -1937,6 +2396,11 @@ $("#critList").addEventListener("input", e => {
   const inp = e.target.closest(".crit-input"); if (!inp) return;
   const c = state.criteria.find(c => c.id === inp.dataset.cid); if (!c) return;
   c.name = inp.value; state.pkg = null;
+  // re-guess the direction while the name is still the default guess
+  if (!c.dirLocked) {
+    const guessed = inferDir(c.name);
+    if (guessed !== c.dir) { c.dir = guessed; renderCriteria(); $(`.crit-input[data-cid="${c.id}"]`).focus(); }
+  }
   save(); renderPresets(); renderMatrix(); renderRoast();
 });
 $("#critList").addEventListener("click", e => {
@@ -1946,6 +2410,15 @@ $("#critList").addEventListener("click", e => {
     c.weight = parseFloat(w.dataset.w);
     Sound.blip(c.weight >= 1.5);
     save(); renderCriteria(); renderMatrix(); renderRoast();
+    return;
+  }
+  const d = e.target.closest('[data-act="dir"]');
+  if (d) {
+    const c = state.criteria.find(c => c.id === d.dataset.cid); if (!c) return;
+    c.dir = c.dir === "cost" ? "benefit" : "cost";
+    c.dirLocked = true;                 // an explicit choice outranks the guess
+    Sound.blip(c.dir === "benefit");
+    save(); renderCriteria(); renderMatrix(); renderHeatmap(); renderRoast();
     return;
   }
   const rm = e.target.closest('[data-act="rm-crit"]');
@@ -1959,8 +2432,9 @@ $("#critList").addEventListener("click", e => {
 });
 $("#addCritBtn").addEventListener("click", () => {
   if (state.criteria.length >= MAX_CRIT) return;
-  state.criteria.push({ id: uid(), name: "", weight: 1 });
+  state.criteria.push({ id: uid(), name: "", weight: 1.5, dir: "benefit" });
   state.pkg = null;
+  state.duels = {}; state.ahp = null;
   resetSprint();
   Sound.blip(true);
   afterEdit(false); renderPresets(); renderCriteria(); renderMatrix();
@@ -1986,7 +2460,7 @@ $("#matrix").addEventListener("click", e => {
   const bodyRows = $$("#matrix .mrow").filter(r => !r.classList.contains("head"));
   state.options.forEach((o, i) => {
     const r = results.find(x => x.id === o.id);
-    if (r && bodyRows[i]) $(".sc", bodyRows[i]).textContent = `Σ ${r.total.toFixed(1)} pts`;
+    if (r && bodyRows[i]) $(".sc", bodyRows[i]).textContent = `${r.pct}% ideal`;
   });
   save(); renderRoast();
   if (state.sprintDone) renderHeatmap();
@@ -2009,6 +2483,28 @@ $("#sprintChoices").innerHTML = SNAP.map(([n, w]) =>
 ).join("");
 
 $("#startSprintBtn").addEventListener("click", () => Sprint.start(true));
+$("#startDuelBtn").addEventListener("click", () => Duel.start());
+$("#duelA").addEventListener("click", () => Duel.pick("a"));
+$("#duelB").addEventListener("click", () => Duel.pick("b"));
+$("#duelSteps").addEventListener("click", e => {
+  const b = e.target.closest("[data-int]");
+  if (b) Duel.intensity(parseInt(b.dataset.int, 10));
+});
+$("#duelBackBtn").addEventListener("click", () => Duel.back());
+$("#duelSkipBtn").addEventListener("click", () => Duel.skipOne());
+/* keys during the duel: left/right pick a side, 1-5 set the intensity */
+document.addEventListener("keydown", e => {
+  if (!Duel.active) return;
+  const t = e.target;
+  if (t && (t.tagName === "INPUT" || t.tagName === "TEXTAREA" || t.isContentEditable)) return;
+  if (e.key === "ArrowLeft") { e.preventDefault(); Duel.pick("a"); }
+  else if (e.key === "ArrowRight") { e.preventDefault(); Duel.pick("b"); }
+  else if (e.key >= "1" && e.key <= "5") {
+    e.preventDefault();
+    const step = DUEL_STEPS[parseInt(e.key, 10) - 1];
+    if (step) Duel.intensity(step[0]);
+  } else if (e.key === "Escape") { Duel.finish(false); Sprint.start(true); }
+});
 $("#redoSprintBtn").addEventListener("click", () => Sprint.start(true));
 $("#skipSprintBtn").addEventListener("click", () => {
   state.sprintDone = true;

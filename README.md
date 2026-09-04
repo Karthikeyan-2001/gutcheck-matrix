@@ -67,11 +67,11 @@ A few things that are load-bearing and easy to break:
   visible gaps) and pulls the browser's trailing gap back off with a negative
   margin. It re-runs on font load, resize and theme change, because the two
   themes use different display faces.
-- **Bodoni Moda is only used above ~1.3rem.** It is a variable face defaulting
-  to 400, so every display rule states its own weight (700, or 800 for the
-  wordmark and the winner) — otherwise the didone renders far too light, and its
-  hairlines disappear against coloured grounds at small sizes. UI-sized text
-  uses Karla.
+- **Bungee is the display face, and only above ~1.3rem.** It ships a single
+  weight (400), so no display rule may ask for 700/800 — the browser would
+  synthesise a faux-bold. It is also a wide signage face, so its sizes run
+  considerably smaller than a normal-width face would at the same visual
+  weight; that is why the display sizes look low. UI-sized text uses Karla.
 - **Solid buttons use `--cta` / `--cta-red`**, darker siblings of `--teal` and
   `--red`, so light text on them clears WCAG AA (4.5:1). The bright tints stay
   for bars, fills and heat cells.

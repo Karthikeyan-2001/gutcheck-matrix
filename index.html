@@ -49,6 +49,10 @@
      clears WCAG AA (4.5:1) rather than the 3.2:1 the bright tints gave. */
   --cta:#3f5c4a;
   --cta-red:#8b3225;
+  --sb-track:#b5a078;        /* channel routed into the card stock */
+  --sb-thumb:#574a37;
+  --sb-thumb-hover:#2f281f;
+  --sb-page-thumb:#7a6b52;   /* the page rides over the dark counter */
   --glow:none;
 }
 html[data-theme="cyber"]{
@@ -71,6 +75,10 @@ html[data-theme="cyber"]{
      prints straight onto the ground */
   --gold-deep:#ffe066;
   --on-bg:#8b7fc4;
+  --sb-track:#1b1442;
+  --sb-thumb:#6b52c9;
+  --sb-thumb-hover:#21d4fd;
+  --sb-page-thumb:#6b52c9;
   --shadow-xs:0 0 0 1px rgba(133,247,255,.22), 0 0 14px rgba(33,212,253,.20);
   --shadow-sm:0 0 0 1px rgba(133,247,255,.26), 0 0 22px rgba(176,107,255,.30);
   --shadow-md:0 0 0 1px rgba(133,247,255,.30), 0 0 34px rgba(33,212,253,.32);
@@ -607,6 +615,29 @@ html[data-theme="cyber"] .hm-cell{background:color-mix(in srgb, var(--teal) calc
 .vstat.weak .vn{color:var(--red)}
 .vstat.strong .vn{color:var(--green)}
 .hm-cell.neg{outline:1.5px solid color-mix(in srgb,var(--red) 45%,transparent);outline-offset:-3px}
+
+/* ---------- scrollbars ----------
+   Squared-off thumb in a recessed channel, so a scrolling receipt reads as
+   paper running through a slot rather than a browser widget bolted on. */
+*{scrollbar-width:thin;scrollbar-color:var(--sb-thumb) var(--sb-track)}
+::-webkit-scrollbar{width:11px;height:11px}
+::-webkit-scrollbar-track{background:var(--sb-track)}
+::-webkit-scrollbar-thumb{
+  background:var(--sb-thumb);border:2px solid var(--sb-track);
+  border-radius:2px;background-clip:padding-box;
+}
+::-webkit-scrollbar-thumb:hover{background:var(--sb-thumb-hover)}
+::-webkit-scrollbar-corner{background:var(--sb-track)}
+
+/* the document scrollbar sits on the dark ground, not on card stock */
+html{scrollbar-color:var(--sb-page-thumb) var(--bg)}
+html::-webkit-scrollbar-track{background:var(--bg)}
+html::-webkit-scrollbar-thumb{background:var(--sb-page-thumb);border-color:var(--bg)}
+html::-webkit-scrollbar-thumb:hover{background:var(--ink-soft)}
+html[data-theme="cyber"]::-webkit-scrollbar-thumb:hover{background:var(--sb-thumb-hover)}
+
+/* keep the receipt from twitching sideways as its scrollbar appears */
+.receipt-pre{scrollbar-gutter:stable}
 
 /* ---------- countdown overlay ---------- */
 .overlay{
